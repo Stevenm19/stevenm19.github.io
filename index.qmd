@@ -1,7 +1,6 @@
 ---
-title: "Steven Mou's Site"
+title: "Steven Mou"
 ---
+![](images/profile.jpg){width=250px}
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Hi. I'm Steven, I'm from Toronto, and I'm currently pursuing a Master of Data Science at UBC. I previously went to the University of Waterloo where I did my undergrad for Computer Science and Finance. I'm always looking for more experiences and opportunities as I work towards becoming more technically complete. 
