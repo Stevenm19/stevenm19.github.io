@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "## Life up until now I grew up in Toronto and went to UWaterloo for undergrad like many other people. The summer after graduation was the only break I had before transitioning into the master’s program. Before that, I mainly worked in multiple internships within the fintech industry."
+    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nSteven Mou\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -12,83 +12,6 @@
     "title": "Steven Mou",
     "section": "",
     "text": "Hi. I’m Steven, I’m from Toronto, and I’m currently pursuing a Master of Data Science at UBC. I previously went to the University of Waterloo where I did my undergrad for Computer Science and Finance. I’m always looking for more experiences and opportunities as I work towards becoming more technically complete."
-  },
-  {
-    "objectID": "about.html#section",
-    "href": "about.html#section",
-    "title": "About",
-    "section": "",
-    "text": "It was actually my previous internships that first sparked my interest in data science. Working with a lot of financial data, it really drove home that data is the underlying factor of everything. I wanted to learn more about how I can create with data. Also, it wouldn’t hurt to try to experience a new life in Vancouver."
-  },
-  {
-    "objectID": "about.html#section-1",
-    "href": "about.html#section-1",
-    "title": "About",
-    "section": "",
-    "text": "It was actually my previous internships that first sparked my interest in data science. Working with a lot of financial data, it really drove home that data is the underlying factor of everything. I wanted to learn more about how I can create with data. Also, it wouldn’t hurt to try to experience a new life in Vancouver."
-  },
-  {
-    "objectID": "about.html#s",
-    "href": "about.html#s",
-    "title": "About",
-    "section": "",
-    "text": "I grew up in Toronto and went to UWaterloo for undergrad like many other people. The summer after graduation was the only break I had before transitioning into the master’s program. Before that, I mainly worked in multiple internships within the fintech industry."
-  },
-  {
-    "objectID": "about.html#my",
-    "href": "about.html#my",
-    "title": "About",
-    "section": "",
-    "text": "I grew up in Toronto and went to UWaterloo for undergrad like many other people. The summer after graduation was the only break I had before transitioning into the master’s program. Before that, I mainly worked in multiple internships within the fintech industry."
-  },
-  {
-    "objectID": "about.html#life-up-until-now",
-    "href": "about.html#life-up-until-now",
-    "title": "About",
-    "section": "Life up until now",
-    "text": "Life up until now\nI grew up in Toronto and went to UWaterloo for undergrad like many other people. The summer after graduation was the only break I had before transitioning into the master’s program. Before that, I mainly worked in multiple internships within the fintech industry."
-  },
-  {
-    "objectID": "about.html#why-i-start",
-    "href": "about.html#why-i-start",
-    "title": "About",
-    "section": "Why I start",
-    "text": "Why I start\nIt was actually my previous internships that first sparked my interest in data science. Working with a lot of financial data, it really drove home that data is the underlying factor of everything. I wanted to learn more about how I can create with data. Also, it wouldn’t hurt to try to experience a new life in Vancouver."
-  },
-  {
-    "objectID": "about.html#why-i-started-mds",
-    "href": "about.html#why-i-started-mds",
-    "title": "About",
-    "section": "Why I started MDS",
-    "text": "Why I started MDS\nIt was actually my previous internships that first sparked my interest in data science. Working with a lot of financial data, it really drove home that data is the underlying factor of everything. I wanted to learn more about how I can create with data. Also, it wouldn’t hurt to try to experience a new life in Vancouver."
-  },
-  {
-    "objectID": "about.html#why-masters",
-    "href": "about.html#why-masters",
-    "title": "About",
-    "section": "Why Master’s?",
-    "text": "Why Master’s?\nIt was actually my previous internships that first sparked my interest in data science. Working with a lot of financial data, it really drove home that data is the underlying factor of everything. I wanted to learn more about how I can create with data. Also, it wouldn’t hurt to try to experience a new life in Vancouver."
-  },
-  {
-    "objectID": "about.html#o",
-    "href": "about.html#o",
-    "title": "About",
-    "section": "O",
-    "text": "O"
-  },
-  {
-    "objectID": "about.html#outside-of-academics-and-careers",
-    "href": "about.html#outside-of-academics-and-careers",
-    "title": "About",
-    "section": "Outside of Academics and Careers",
-    "text": "Outside of Academics and Careers\nOn a normal day, I’d probably jump at any opportunity to play volleyball. However, it’s not sustainable to play every day so I end up working out more often. Otherwise, my life is simple: a black iced coffee, good food, good company and the occasional scenic nature walk."
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nSteven Mou\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/first-weeks/index.html",
@@ -103,5 +26,26 @@
     "title": "My first weeks in MDS",
     "section": "",
     "text": "End of my first week in Vancouver"
+  },
+  {
+    "objectID": "about.html#life-up-until-now",
+    "href": "about.html#life-up-until-now",
+    "title": "About",
+    "section": "Life up until now",
+    "text": "Life up until now\nI grew up in Toronto and went to UWaterloo for undergrad like many other people. The summer after graduation was the only break I had before transitioning into the master’s program. Before that, I mainly worked in multiple internships within the fintech industry."
+  },
+  {
+    "objectID": "about.html#why-masters",
+    "href": "about.html#why-masters",
+    "title": "About",
+    "section": "Why Master’s?",
+    "text": "Why Master’s?\nIt was actually my previous internships that first sparked my interest in data science. Working with a lot of financial data, it really drove home that data is the underlying factor of everything. I wanted to learn more about how I can create with data. Also, it wouldn’t hurt to try to experience a new life in Vancouver."
+  },
+  {
+    "objectID": "about.html#outside-of-academics-and-careers",
+    "href": "about.html#outside-of-academics-and-careers",
+    "title": "About",
+    "section": "Outside of Academics and Careers",
+    "text": "Outside of Academics and Careers\nOn a normal day, I’d probably jump at any opportunity to play volleyball. However, it’s not sustainable to play every day so I end up working out more often. Otherwise, my life is simple: a black iced coffee, good food, good company and the occasional scenic nature walk."
   }
 ]
