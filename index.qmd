@@ -1,6 +1,9 @@
 ---
 title: "Steven Mou"
+about:
+  template: marquee
+  image: images/sm.jpg
 ---
-![](images/profile.jpg){width=250px}
+
 
 Hi. I'm Steven, I'm from Toronto, and I'm currently pursuing a Master of Data Science at UBC. I previously went to the University of Waterloo where I did my undergrad for Computer Science and Finance. I'm always looking for more experiences and opportunities as I work towards becoming more technically complete. 
