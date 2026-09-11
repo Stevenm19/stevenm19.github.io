@@ -16,8 +16,12 @@ website:
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      light:
+        - minty
+        - brand
+      dark:
+        - superhero
+        - brand
     css: styles.css
     toc: true
 
