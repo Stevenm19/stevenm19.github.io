@@ -3,5 +3,5 @@ title: "My first weeks in MDS"
 author: "Steven Mou"
 date: 2026-09-11
 ---
-
-![End of my first week in Vancouver](grouse.HEIC)
+## 
+![End of my first week in Vancouver](grouse.jpeg){fig-align="center"}
