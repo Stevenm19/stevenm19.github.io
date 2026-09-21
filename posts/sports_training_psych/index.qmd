@@ -1,5 +1,25 @@
 ---
-title: "An Analysis on Psychological Effectiveness in Sports Training"
+title: "Psychological Effectiveness in Sports Training"
 author: "Steven Mou"
 date: 2026-09-21
 ---
+
+
+\
+
+## Data Source:
+
+This analysis uses the *Sports Training* dataset by
+[VisionLangAI], obtained from Kaggle and licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+Source: https://www.kaggle.com/datasets/visionlangai/sports-training
+
+## Intro
+There exist many methods and intensities that athletes can use to train. From a general perspective, most people think the same two things when it comes to training: **Train hard, and Train smart**. 
+
+But what does that really mean? Obviously, there are different sports and each sport has to train differrently. However, at the same time, each sport can take something away from another. Besides the sport, we also need to consider the individuals playing the sport. Even if two players play the same sport, no two players will have the same psychological profile. 
+
+Through an analysis of this dataset, we will analyze training methods, adaptation types, intensity level and other factors to answer the question: *Which psychological training methods are associated with better outcomes for athletes?*
+
+## Analysis

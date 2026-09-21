@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nSteven Mou\n\n\n\n\n\nNo matching items"
+    "text": "An Analysis on Collegiate Athletes: Injuries and Performance\n\n\n\n\n\n\n\n\nSep 21, 2026\n\n\nSteven Mou\n\n\n\n\n\n\n\n\n\n\n\n\nPsychological Effectiveness in Sports Training\n\n\n\n\n\n\n\n\nSep 21, 2026\n\n\nSteven Mou\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 11, 2026\n\n\nSteven Mou\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -47,5 +47,33 @@
     "title": "About",
     "section": "Outside of Academics and Careers",
     "text": "Outside of Academics and Careers\nOn a normal day, I’d probably jump at any opportunity to play volleyball. However, it’s not sustainable to play every day so I end up working out more often. Otherwise, my life is simple: a black iced coffee, good food, good company and the occasional scenic nature walk."
+  },
+  {
+    "objectID": "posts/sports_training_psych/index.html",
+    "href": "posts/sports_training_psych/index.html",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "",
+    "text": "Data Source:\nThis analysis uses the Sports Training dataset by [VisionLangAI], obtained from Kaggle and licensed under CC BY 4.0.\nSource: https://www.kaggle.com/datasets/visionlangai/sports-training"
+  },
+  {
+    "objectID": "posts/sports_training_psych/index.html#analysis",
+    "href": "posts/sports_training_psych/index.html#analysis",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "Analysis",
+    "text": "Analysis"
+  },
+  {
+    "objectID": "posts/sports_training_psych/index.html#data-source",
+    "href": "posts/sports_training_psych/index.html#data-source",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "Data Source:",
+    "text": "Data Source:\nThis analysis uses the Sports Training dataset by [VisionLangAI], obtained from Kaggle and licensed under CC BY 4.0.\nSource: https://www.kaggle.com/datasets/visionlangai/sports-training"
+  },
+  {
+    "objectID": "posts/sports_training_psych/index.html#intro",
+    "href": "posts/sports_training_psych/index.html#intro",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "Intro",
+    "text": "Intro\nThere exist many methods and intensities that athletes can use to train. From a general perspective, most people think the same two things when it comes to training: Train hard, and Train smart.\nBut what does that really mean? Obviously, there are different sports and each sport has to train differrently. However, at the same time, each sport can take something away from another. Besides the sport, we also need to consider the individuals playing the sport. Even if two players play the same sport, no two players will have the same psychological profile.\nThrough an analysis of this dataset, we will analyze training methods, adaptation types, intensity level and other factors to answer the question: Which psychological training methods are associated with better outcomes for athletes?"
   }
 ]
