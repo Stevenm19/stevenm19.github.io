@@ -1,5 +1,85 @@
 ---
 title: "An Analysis on Collegiate Athletes: Injuries and Performance"
 author: "Steven Mou"
-date: 2026-09-21
+date: 2026-09-22
 ---
+
+\
+
+## Data Source:
+
+This analysis uses the *Athlete Injury and Performance* dataset by
+[Ziya], obtained from Kaggle and licensed under **CC0: Public Domain**.
+
+Source: [Athlete Injury and Performance Dataset](https://www.kaggle.com/datasets/ziya07/athlete-injury-and-performance-dataset?resource=download)
+
+## Intro
+The bane of any athlete's existence is: **Injury**.
+
+You can try to escape from it; do your stretching, conditioning, strengthening, but it'll always catch up to you in some way unexpectedly. The most you can do is prime the body to try to prevent injuries. 
+
+It's a lot easier to get injured as you get older. That's why, when you're young, you think you're invincible. So, it should make sense that people aged 18-25 at their athletic peak should be the least injury-prone, right? Wrong. The higher level in competitive sports you go, the more risk of injury there is. Thus, through this dataset, we will try to analyze **which training and recovery factors are associated with injury among collegiate athletes?** 
+
+## Loading and Inspecting the Data
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+athletes = pd.read_csv('data/collegiate_athlete_injury_dataset.csv')
+
+athletes.head()
+```
+
+```{python}
+counts = pd.DataFrame({
+    "count": athletes["Injury_Indicator"].value_counts(),
+    "pct_total": athletes["Injury_Indicator"].value_counts(normalize=True)
+})
+counts.index = ['healthy', 'injured']
+
+counts
+```
+
+This dataset is comprised of 200 collegiate basektball players of both genders and of varying heights, weights and positions. We can see that out of the 200 players, 93% of the players are healthy but 7% of them are injured. 
+
+Although 7% might not seem like a lot, it's easier to put it into perspective if you consider how they should be in their peak, they get premium training, nutrition, etc. 
+
+## Comparing Training and Recovery Characteristics
+```{python}
+injury_summary = (
+    athletes
+    .groupby("Injury_Indicator")[
+        [
+            "Training_Intensity",
+            "Training_Hours_Per_Week",
+            "Recovery_Days_Per_Week",
+            "Fatigue_Score",
+            "ACL_Risk_Score",
+            "Load_Balance_Score"
+        ]
+    ]
+    .mean()
+)
+
+injury_summary.index = ['healthy', 'injured']
+
+injury_summary
+```
+
+
+From this summary alone we can see the clearer story between the healthy and the injured. On average, the injured trains more intensely, trains over 2 hours more, takes less recovery days, have much higher fatigue, their ACL risk is almost double and their load balance is lower too. These are all telltale signs that someone is about to be injured or is already injured. 
+
+## Focusing on fatigue
+```{python}
+fatigue_summary = athletes.groupby('Injury_Indicator')['Fatigue_Score'].mean()
+
+fatigue_summary.plot(kind="bar")
+
+plt.xlabel("Injury status")
+plt.ylabel("Average fatigue score")
+plt.title("Average Fatigue Score by Injury Status")
+plt.xticks([0, 1], ["Healthy", "Injury"], rotation=0)
+
+plt.show()
+
+```

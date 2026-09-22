@@ -13,7 +13,7 @@ This analysis uses the *Sports Training* dataset by
 [VisionLangAI], obtained from Kaggle and licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-Source: https://www.kaggle.com/datasets/visionlangai/sports-training
+Source: [Sports Training](https://www.kaggle.com/datasets/visionlangai/sports-training)
 
 ## Intro
 There exist many methods and intensities that athletes can use to train. From a general perspective, most people think the same two things when it comes to training: **Train hard, and Train smart**. 

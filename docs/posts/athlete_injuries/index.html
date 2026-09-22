@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Steven Mou">
-<meta name="dcterms.date" content="2026-09-21">
+<meta name="dcterms.date" content="2026-09-22">
 
 <title>An Analysis on Collegiate Athletes: Injuries and Performance – Steven Mou</title>
 <style>
@@ -28,10 +28,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -79,6 +114,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -287,8 +325,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link active" data-scroll-target="#data-source">Data Source:</a></li>
+  <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#loading-and-inspecting-the-data" id="toc-loading-and-inspecting-the-data" class="nav-link" data-scroll-target="#loading-and-inspecting-the-data">Loading and Inspecting the Data</a></li>
+  <li><a href="#comparing-training-and-recovery-characteristics" id="toc-comparing-training-and-recovery-characteristics" class="nav-link" data-scroll-target="#comparing-training-and-recovery-characteristics">Comparing Training and Recovery Characteristics</a></li>
+  <li><a href="#focusing-on-fatigue" id="toc-focusing-on-fatigue" class="nav-link" data-scroll-target="#focusing-on-fatigue">Focusing on fatigue</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -313,7 +361,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 21, 2026</p>
+      <p class="date">September 22, 2026</p>
     </div>
   </div>
   
@@ -325,8 +373,290 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><br>
+</p>
+<section id="data-source" class="level2">
+<h2 class="anchored" data-anchor-id="data-source">Data Source:</h2>
+<p>This analysis uses the <em>Athlete Injury and Performance</em> dataset by [Ziya], obtained from Kaggle and licensed under <strong>CC0: Public Domain</strong>.</p>
+<p>Source: <a href="https://www.kaggle.com/datasets/ziya07/athlete-injury-and-performance-dataset?resource=download">Athlete Injury and Performance Dataset</a></p>
+</section>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>The bane of any athlete’s existence is: <strong>Injury</strong>.</p>
+<p>You can try to escape from it; do your stretching, conditioning, strengthening, but it’ll always catch up to you in some way unexpectedly. The most you can do is prime the body to try to prevent injuries.</p>
+<p>It’s a lot easier to get injured as you get older. That’s why, when you’re young, you think you’re invincible. So, it should make sense that people aged 18-25 at their athletic peak should be the least injury-prone, right? Wrong. The higher level in competitive sports you go, the more risk of injury there is. Thus, through this dataset, we will try to analyze <strong>which training and recovery factors are associated with injury among collegiate athletes?</strong></p>
+</section>
+<section id="loading-and-inspecting-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-and-inspecting-the-data">Loading and Inspecting the Data</h2>
+<div id="65ae7c2a" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>athletes <span class="op">=</span> pd.read_csv(<span class="st">'data/collegiate_athlete_injury_dataset.csv'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>athletes.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="130">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Athlete_ID</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Height_cm</th>
+<th data-quarto-table-cell-role="th">Weight_kg</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Training_Intensity</th>
+<th data-quarto-table-cell-role="th">Training_Hours_Per_Week</th>
+<th data-quarto-table-cell-role="th">Recovery_Days_Per_Week</th>
+<th data-quarto-table-cell-role="th">Match_Count_Per_Week</th>
+<th data-quarto-table-cell-role="th">Rest_Between_Events_Days</th>
+<th data-quarto-table-cell-role="th">Fatigue_Score</th>
+<th data-quarto-table-cell-role="th">Performance_Score</th>
+<th data-quarto-table-cell-role="th">Team_Contribution_Score</th>
+<th data-quarto-table-cell-role="th">Load_Balance_Score</th>
+<th data-quarto-table-cell-role="th">ACL_Risk_Score</th>
+<th data-quarto-table-cell-role="th">Injury_Indicator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>A001</td>
+<td>24</td>
+<td>Female</td>
+<td>195</td>
+<td>99</td>
+<td>Center</td>
+<td>2</td>
+<td>13</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>99</td>
+<td>58</td>
+<td>100</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>A002</td>
+<td>21</td>
+<td>Male</td>
+<td>192</td>
+<td>65</td>
+<td>Forward</td>
+<td>8</td>
+<td>14</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+<td>55</td>
+<td>63</td>
+<td>83</td>
+<td>73</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>A003</td>
+<td>22</td>
+<td>Male</td>
+<td>163</td>
+<td>83</td>
+<td>Guard</td>
+<td>8</td>
+<td>8</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>6</td>
+<td>58</td>
+<td>62</td>
+<td>100</td>
+<td>62</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>A004</td>
+<td>24</td>
+<td>Female</td>
+<td>192</td>
+<td>90</td>
+<td>Guard</td>
+<td>1</td>
+<td>13</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>7</td>
+<td>82</td>
+<td>74</td>
+<td>78</td>
+<td>51</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>A005</td>
+<td>20</td>
+<td>Female</td>
+<td>173</td>
+<td>79</td>
+<td>Center</td>
+<td>3</td>
+<td>9</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>90</td>
+<td>51</td>
+<td>83</td>
+<td>49</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="a50bce23" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"count"</span>: athletes[<span class="st">"Injury_Indicator"</span>].value_counts(),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pct_total"</span>: athletes[<span class="st">"Injury_Indicator"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>counts.index <span class="op">=</span> [<span class="st">'healthy'</span>, <span class="st">'injured'</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>counts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="131">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">pct_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">healthy</th>
+<td>186</td>
+<td>0.93</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">injured</th>
+<td>14</td>
+<td>0.07</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>This dataset is comprised of 200 collegiate basektball players of both genders and of varying heights, weights and positions. We can see that out of the 200 players, 93% of the players are healthy but 7% of them are injured.</p>
+<p>Although 7% might not seem like a lot, it’s easier to put it into perspective if you consider how they should be in their peak, they get premium training, nutrition, etc.</p>
+</section>
+<section id="comparing-training-and-recovery-characteristics" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-training-and-recovery-characteristics">Comparing Training and Recovery Characteristics</h2>
+<div id="105ca958" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>injury_summary <span class="op">=</span> (</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    athletes</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"Injury_Indicator"</span>)[</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Training_Intensity"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Training_Hours_Per_Week"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Recovery_Days_Per_Week"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Fatigue_Score"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ACL_Risk_Score"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Load_Balance_Score"</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>injury_summary.index <span class="op">=</span> [<span class="st">'healthy'</span>, <span class="st">'injured'</span>]</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>injury_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="132">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Training_Intensity</th>
+<th data-quarto-table-cell-role="th">Training_Hours_Per_Week</th>
+<th data-quarto-table-cell-role="th">Recovery_Days_Per_Week</th>
+<th data-quarto-table-cell-role="th">Fatigue_Score</th>
+<th data-quarto-table-cell-role="th">ACL_Risk_Score</th>
+<th data-quarto-table-cell-role="th">Load_Balance_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">healthy</th>
+<td>5.037634</td>
+<td>11.155914</td>
+<td>2.043011</td>
+<td>4.715054</td>
+<td>43.747312</td>
+<td>94.559140</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">injured</th>
+<td>6.000000</td>
+<td>13.428571</td>
+<td>1.214286</td>
+<td>7.642857</td>
+<td>82.642857</td>
+<td>77.928571</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>From this summary alone we can see the clearer story between the healthy and the injured. On average, the injured trains more intensely, trains over 2 hours more, takes less recovery days, have much higher fatigue, their ACL risk is almost double and their load balance is lower too. These are all telltale signs that someone is about to be injured or is already injured.</p>
+</section>
+<section id="focusing-on-fatigue" class="level2">
+<h2 class="anchored" data-anchor-id="focusing-on-fatigue">Focusing on fatigue</h2>
+<div id="1ba0d9a1" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fatigue_summary <span class="op">=</span> athletes.groupby(<span class="st">'Injury_Indicator'</span>)[<span class="st">'Fatigue_Score'</span>].mean()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fatigue_summary.plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Injury status"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Average fatigue score"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average Fatigue Score by Injury Status"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="st">"Healthy"</span>, <span class="st">"Injury"</span>], rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="577" height="451" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
