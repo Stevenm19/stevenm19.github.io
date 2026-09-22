@@ -109,6 +109,6 @@
     "href": "posts/sports_training_psych/index.html#comparing-average-effectiveness",
     "title": "Psychological Effectiveness in Sports Training",
     "section": "Comparing Average Effectiveness",
-    "text": "Comparing Average Effectiveness\n#| label: fig-training-effectiveness #| fig-cap: “Average adaptation effectiveness score by psychological training method.”"
+    "text": "Comparing Average Effectiveness\n\nggplot(\n  method_summary,\n  aes(\n    x = reorder(Training_Method, avg_effectiveness),\n    y = avg_effectiveness\n  )\n) +\n  geom_col() +\n  coord_cartesian(ylim = c(11.8, 12.2)) +\n  labs(\n    x = \"Training method\",\n    y = \"Average adaptation effectiveness score\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Average adaptation effectiveness score by psychological training method."
   }
 ]

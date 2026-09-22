@@ -65,3 +65,19 @@ method_summary |>
 ```{r}
 #| label: fig-training-effectiveness
 #| fig-cap: "Average adaptation effectiveness score by psychological training method."
+
+ggplot(
+  method_summary,
+  aes(
+    x = reorder(Training_Method, avg_effectiveness),
+    y = avg_effectiveness
+  )
+) +
+  geom_col() +
+  coord_cartesian(ylim = c(11.8, 12.2)) +
+  labs(
+    x = "Training method",
+    y = "Average adaptation effectiveness score"
+  ) +
+  theme_minimal()
+```
