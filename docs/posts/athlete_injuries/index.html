@@ -335,6 +335,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#loading-and-inspecting-the-data" id="toc-loading-and-inspecting-the-data" class="nav-link" data-scroll-target="#loading-and-inspecting-the-data">Loading and Inspecting the Data</a></li>
   <li><a href="#comparing-training-and-recovery-characteristics" id="toc-comparing-training-and-recovery-characteristics" class="nav-link" data-scroll-target="#comparing-training-and-recovery-characteristics">Comparing Training and Recovery Characteristics</a></li>
   <li><a href="#focusing-on-fatigue" id="toc-focusing-on-fatigue" class="nav-link" data-scroll-target="#focusing-on-fatigue">Focusing on fatigue</a></li>
+  <li><a href="#does-it-affect-performance" id="toc-does-it-affect-performance" class="nav-link" data-scroll-target="#does-it-affect-performance">Does it affect Performance?</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -384,18 +386,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="intro">Intro</h2>
 <p>The bane of any athlete’s existence is: <strong>Injury</strong>.</p>
 <p>You can try to escape from it; do your stretching, conditioning, strengthening, but it’ll always catch up to you in some way unexpectedly. The most you can do is prime the body to try to prevent injuries.</p>
-<p>It’s a lot easier to get injured as you get older. That’s why, when you’re young, you think you’re invincible. So, it should make sense that people aged 18-25 at their athletic peak should be the least injury-prone, right? Wrong. The higher level in competitive sports you go, the more risk of injury there is. Thus, through this dataset, we will try to analyze <strong>which training and recovery factors are associated with injury among collegiate athletes?</strong></p>
+<p>It’s a lot easier to get injured as you get older. That’s why, when you’re young, you think you’re invincible. So, it should make sense that people aged 18-25 at their athletic peak should be the least injury-prone, right? Wrong. The higher level in competitive sports you go, the more risk of injury there is. Thus, through this dataset, we will try to analyze <strong>How do training load, recovery, and fatigue differ between injured and healthy collegiate athletes?</strong></p>
 </section>
 <section id="loading-and-inspecting-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="loading-and-inspecting-the-data">Loading and Inspecting the Data</h2>
-<div id="65ae7c2a" class="cell" data-execution_count="1">
+<div id="ab2f0d0e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>athletes <span class="op">=</span> pd.read_csv(<span class="st">'data/collegiate_athlete_injury_dataset.csv'</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>athletes.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="130">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -529,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="a50bce23" class="cell" data-execution_count="2">
+<div id="4567073a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"count"</span>: athletes[<span class="st">"Injury_Indicator"</span>].value_counts(),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pct_total"</span>: athletes[<span class="st">"Injury_Indicator"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span>
@@ -537,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>counts.index <span class="op">=</span> [<span class="st">'healthy'</span>, <span class="st">'injured'</span>]</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>counts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="131">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -571,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="comparing-training-and-recovery-characteristics" class="level2">
 <h2 class="anchored" data-anchor-id="comparing-training-and-recovery-characteristics">Comparing Training and Recovery Characteristics</h2>
-<div id="105ca958" class="cell" data-execution_count="3">
+<div id="1f35f66d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>injury_summary <span class="op">=</span> (</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    athletes</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"Injury_Indicator"</span>)[</span>
@@ -590,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>injury_summary.index <span class="op">=</span> [<span class="st">'healthy'</span>, <span class="st">'injured'</span>]</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>injury_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="132">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -635,7 +637,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="focusing-on-fatigue" class="level2">
 <h2 class="anchored" data-anchor-id="focusing-on-fatigue">Focusing on fatigue</h2>
-<div id="1ba0d9a1" class="cell" data-execution_count="4">
+<div id="416ab75b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fatigue_summary <span class="op">=</span> athletes.groupby(<span class="st">'Injury_Indicator'</span>)[<span class="st">'Fatigue_Score'</span>].mean()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fatigue_summary.plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
@@ -644,16 +646,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Average fatigue score"</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average Fatigue Score by Injury Status"</span>)</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="st">"Healthy"</span>, <span class="st">"Injury"</span>], rotation<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="bu">range</span>(<span class="dv">11</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-5-output-1.png" width="577" height="451" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="585" height="451" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Humans have drive and grit, and there’s been a long-standing narrative that we have to push past our limits in order to accomplish something. That’s only true to an extent and we have to be able to manage that to make sure nothing breaks; figuratively and literally speaking.</p>
+<p>Fatigue is one of the most basic indicators that tell us that our bodies need rest. The more fatigue the body experiences, the more at risk of injury too. Out of a 10-point scale, the fact that the injured athletes have a noticeably higher score on fatigue is concering. The healthy athletes maintain a baseline-level (suitable for athletes), at almost a score of 5. On the other hand, the injured is approaching a dangerous level with a score reaching almost an 8. With matches, practice, and additional training, fatigue is bound to keep amassing.</p>
+</section>
+<section id="does-it-affect-performance" class="level2">
+<h2 class="anchored" data-anchor-id="does-it-affect-performance">Does it affect Performance?</h2>
+<div id="798fe1ff" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>performance_summary <span class="op">=</span> (</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    athletes</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"Injury_Indicator"</span>)[</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"Performance_Score"</span>, <span class="st">"Team_Contribution_Score"</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>performance_summary.index <span class="op">=</span> [<span class="st">"Healthy"</span>, <span class="st">"Injured"</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>performance_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Performance_Score</th>
+<th data-quarto-table-cell-role="th">Team_Contribution_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Healthy</th>
+<td>74.370968</td>
+<td>72.462366</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Injured</th>
+<td>75.714286</td>
+<td>74.857143</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="a3cfd1c7" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>performance_summary[<span class="st">"Performance_Score"</span>].plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Injury status"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Average performance score"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Average Performance Score by Injury Status"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">101</span>,<span class="dv">10</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-1.png" width="594" height="451" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With the habits of the injured players, we can see that it does make them perform better…marginally. The average performance score of a healthy player is 74.4, whereas the average performance score of an injured player is 75.7. Does overtraining make the performance score higher? Yes. Is it worth it? No.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Doing all that extra training, stressing the body to the brink of breaking, and hindering the body from resting only accounts for an almost obsolete increase in performance. The worst part is that tiny sliver of increase in performance may set the athlete back from training or even playing for extended periods of time. Then what? High risk, very low reward.</p>
+<p>The lesson here is: even the greatest athletes get injured. The truly great athletes are the ones who are able to prolong their career by staying healthy.</p>
 
 
 </section>

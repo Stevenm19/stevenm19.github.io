@@ -25,7 +25,7 @@
     "href": "posts/athlete_injuries/index.html#intro",
     "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
     "section": "Intro",
-    "text": "Intro\nThe bane of any athlete’s existence is: Injury.\nYou can try to escape from it; do your stretching, conditioning, strengthening, but it’ll always catch up to you in some way unexpectedly. The most you can do is prime the body to try to prevent injuries.\nIt’s a lot easier to get injured as you get older. That’s why, when you’re young, you think you’re invincible. So, it should make sense that people aged 18-25 at their athletic peak should be the least injury-prone, right? Wrong. The higher level in competitive sports you go, the more risk of injury there is. Thus, through this dataset, we will try to analyze which training and recovery factors are associated with injury among collegiate athletes?"
+    "text": "Intro\nThe bane of any athlete’s existence is: Injury.\nYou can try to escape from it; do your stretching, conditioning, strengthening, but it’ll always catch up to you in some way unexpectedly. The most you can do is prime the body to try to prevent injuries.\nIt’s a lot easier to get injured as you get older. That’s why, when you’re young, you think you’re invincible. So, it should make sense that people aged 18-25 at their athletic peak should be the least injury-prone, right? Wrong. The higher level in competitive sports you go, the more risk of injury there is. Thus, through this dataset, we will try to analyze How do training load, recovery, and fatigue differ between injured and healthy collegiate athletes?"
   },
   {
     "objectID": "posts/athlete_injuries/index.html#loading-and-inspecting-the-data",
@@ -33,6 +33,34 @@
     "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
     "section": "Loading and Inspecting the Data",
     "text": "Loading and Inspecting the Data\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nathletes = pd.read_csv('data/collegiate_athlete_injury_dataset.csv')\n\nathletes.head()\n\n\n\n\n\n\n\n\nAthlete_ID\nAge\nGender\nHeight_cm\nWeight_kg\nPosition\nTraining_Intensity\nTraining_Hours_Per_Week\nRecovery_Days_Per_Week\nMatch_Count_Per_Week\nRest_Between_Events_Days\nFatigue_Score\nPerformance_Score\nTeam_Contribution_Score\nLoad_Balance_Score\nACL_Risk_Score\nInjury_Indicator\n\n\n\n\n0\nA001\n24\nFemale\n195\n99\nCenter\n2\n13\n2\n3\n1\n1\n99\n58\n100\n4\n0\n\n\n1\nA002\n21\nMale\n192\n65\nForward\n8\n14\n1\n3\n1\n4\n55\n63\n83\n73\n0\n\n\n2\nA003\n22\nMale\n163\n83\nGuard\n8\n8\n2\n1\n3\n6\n58\n62\n100\n62\n0\n\n\n3\nA004\n24\nFemale\n192\n90\nGuard\n1\n13\n1\n1\n1\n7\n82\n74\n78\n51\n0\n\n\n4\nA005\n20\nFemale\n173\n79\nCenter\n3\n9\n1\n2\n1\n2\n90\n51\n83\n49\n0\n\n\n\n\n\n\n\n\ncounts = pd.DataFrame({\n    \"count\": athletes[\"Injury_Indicator\"].value_counts(),\n    \"pct_total\": athletes[\"Injury_Indicator\"].value_counts(normalize=True)\n})\ncounts.index = ['healthy', 'injured']\n\ncounts\n\n\n\n\n\n\n\n\ncount\npct_total\n\n\n\n\nhealthy\n186\n0.93\n\n\ninjured\n14\n0.07\n\n\n\n\n\n\n\nThis dataset is comprised of 200 collegiate basektball players of both genders and of varying heights, weights and positions. We can see that out of the 200 players, 93% of the players are healthy but 7% of them are injured.\nAlthough 7% might not seem like a lot, it’s easier to put it into perspective if you consider how they should be in their peak, they get premium training, nutrition, etc."
+  },
+  {
+    "objectID": "posts/athlete_injuries/index.html#comparing-training-and-recovery-characteristics",
+    "href": "posts/athlete_injuries/index.html#comparing-training-and-recovery-characteristics",
+    "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
+    "section": "Comparing Training and Recovery Characteristics",
+    "text": "Comparing Training and Recovery Characteristics\n\ninjury_summary = (\n    athletes\n    .groupby(\"Injury_Indicator\")[\n        [\n            \"Training_Intensity\",\n            \"Training_Hours_Per_Week\",\n            \"Recovery_Days_Per_Week\",\n            \"Fatigue_Score\",\n            \"ACL_Risk_Score\",\n            \"Load_Balance_Score\"\n        ]\n    ]\n    .mean()\n)\n\ninjury_summary.index = ['healthy', 'injured']\n\ninjury_summary\n\n\n\n\n\n\n\n\nTraining_Intensity\nTraining_Hours_Per_Week\nRecovery_Days_Per_Week\nFatigue_Score\nACL_Risk_Score\nLoad_Balance_Score\n\n\n\n\nhealthy\n5.037634\n11.155914\n2.043011\n4.715054\n43.747312\n94.559140\n\n\ninjured\n6.000000\n13.428571\n1.214286\n7.642857\n82.642857\n77.928571\n\n\n\n\n\n\n\nFrom this summary alone we can see the clearer story between the healthy and the injured. On average, the injured trains more intensely, trains over 2 hours more, takes less recovery days, have much higher fatigue, their ACL risk is almost double and their load balance is lower too. These are all telltale signs that someone is about to be injured or is already injured."
+  },
+  {
+    "objectID": "posts/athlete_injuries/index.html#focusing-on-fatigue",
+    "href": "posts/athlete_injuries/index.html#focusing-on-fatigue",
+    "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
+    "section": "Focusing on fatigue",
+    "text": "Focusing on fatigue\n\nfatigue_summary = athletes.groupby('Injury_Indicator')['Fatigue_Score'].mean()\n\nfatigue_summary.plot(kind=\"bar\")\n\nplt.xlabel(\"Injury status\")\nplt.ylabel(\"Average fatigue score\")\nplt.title(\"Average Fatigue Score by Injury Status\")\nplt.xticks([0, 1], [\"Healthy\", \"Injury\"], rotation=0)\nplt.yticks(range(11))\n\nplt.show()\n\n\n\n\n\n\n\n\nHumans have drive and grit, and there’s been a long-standing narrative that we have to push past our limits in order to accomplish something. That’s only true to an extent and we have to be able to manage that to make sure nothing breaks; figuratively and literally speaking.\nFatigue is one of the most basic indicators that tell us that our bodies need rest. The more fatigue the body experiences, the more at risk of injury too. Out of a 10-point scale, the fact that the injured athletes have a noticeably higher score on fatigue is concering. The healthy athletes maintain a baseline-level (suitable for athletes), at almost a score of 5. On the other hand, the injured is approaching a dangerous level with a score reaching almost an 8. With matches, practice, and additional training, fatigue is bound to keep amassing."
+  },
+  {
+    "objectID": "posts/athlete_injuries/index.html#does-it-affect-performance",
+    "href": "posts/athlete_injuries/index.html#does-it-affect-performance",
+    "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
+    "section": "Does it affect Performance?",
+    "text": "Does it affect Performance?\n\nperformance_summary = (\n    athletes\n    .groupby(\"Injury_Indicator\")[\n        [\"Performance_Score\", \"Team_Contribution_Score\"]\n    ]\n    .mean()\n)\n\nperformance_summary.index = [\"Healthy\", \"Injured\"]\nperformance_summary\n\n\n\n\n\n\n\n\nPerformance_Score\nTeam_Contribution_Score\n\n\n\n\nHealthy\n74.370968\n72.462366\n\n\nInjured\n75.714286\n74.857143\n\n\n\n\n\n\n\n\nperformance_summary[\"Performance_Score\"].plot(kind=\"bar\")\n\nplt.xlabel(\"Injury status\")\nplt.ylabel(\"Average performance score\")\nplt.title(\"Average Performance Score by Injury Status\")\nplt.xticks(rotation=0)\nplt.yticks(range(0,101,10))\nplt.show()\n\n\n\n\n\n\n\n\nWith the habits of the injured players, we can see that it does make them perform better…marginally. The average performance score of a healthy player is 74.4, whereas the average performance score of an injured player is 75.7. Does overtraining make the performance score higher? Yes. Is it worth it? No."
+  },
+  {
+    "objectID": "posts/athlete_injuries/index.html#conclusion",
+    "href": "posts/athlete_injuries/index.html#conclusion",
+    "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
+    "section": "Conclusion",
+    "text": "Conclusion\nDoing all that extra training, stressing the body to the brink of breaking, and hindering the body from resting only accounts for an almost obsolete increase in performance. The worst part is that tiny sliver of increase in performance may set the athlete back from training or even playing for extended periods of time. Then what? High risk, very low reward.\nThe lesson here is: even the greatest athletes get injured. The truly great athletes are the ones who are able to prolong their career by staying healthy."
   },
   {
     "objectID": "posts/first-weeks/index.html",
@@ -117,26 +145,5 @@
     "title": "About",
     "section": "Outside of Academics and Careers",
     "text": "Outside of Academics and Careers\nOn a normal day, I’d probably jump at any opportunity to play volleyball. However, it’s not sustainable to play every day so I end up working out more often. Otherwise, my life is simple: a black iced coffee, good food, good company and the occasional scenic nature walk."
-  },
-  {
-    "objectID": "posts/athlete_injuries/index.html#comparing-training-and-recovery-characteristics",
-    "href": "posts/athlete_injuries/index.html#comparing-training-and-recovery-characteristics",
-    "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
-    "section": "Comparing Training and Recovery Characteristics",
-    "text": "Comparing Training and Recovery Characteristics\n\ninjury_summary = (\n    athletes\n    .groupby(\"Injury_Indicator\")[\n        [\n            \"Training_Intensity\",\n            \"Training_Hours_Per_Week\",\n            \"Recovery_Days_Per_Week\",\n            \"Fatigue_Score\",\n            \"ACL_Risk_Score\",\n            \"Load_Balance_Score\"\n        ]\n    ]\n    .mean()\n)\n\ninjury_summary.index = ['healthy', 'injured']\n\ninjury_summary\n\n\n\n\n\n\n\n\nTraining_Intensity\nTraining_Hours_Per_Week\nRecovery_Days_Per_Week\nFatigue_Score\nACL_Risk_Score\nLoad_Balance_Score\n\n\n\n\nhealthy\n5.037634\n11.155914\n2.043011\n4.715054\n43.747312\n94.559140\n\n\ninjured\n6.000000\n13.428571\n1.214286\n7.642857\n82.642857\n77.928571\n\n\n\n\n\n\n\nFrom this summary alone we can see the clearer story between the healthy and the injured. On average, the injured trains more intensely, trains over 2 hours more, takes less recovery days, have much higher fatigue, their ACL risk is almost double and their load balance is lower too. These are all telltale signs that someone is about to be injured or is already injured."
-  },
-  {
-    "objectID": "posts/athlete_injuries/index.html#focusing-on",
-    "href": "posts/athlete_injuries/index.html#focusing-on",
-    "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
-    "section": "Focusing on",
-    "text": "Focusing on"
-  },
-  {
-    "objectID": "posts/athlete_injuries/index.html#focusing-on-fatigue",
-    "href": "posts/athlete_injuries/index.html#focusing-on-fatigue",
-    "title": "An Analysis on Collegiate Athletes: Injuries and Performance",
-    "section": "Focusing on fatigue",
-    "text": "Focusing on fatigue\n\nfatigue_summary = athletes.groupby('Injury_Indicator')['Fatigue_Score'].mean()\n\nfatigue_summary.plot(kind=\"bar\")\n\nplt.xlabel(\"Injury status\")\nplt.ylabel(\"Average fatigue score\")\nplt.title(\"Average Fatigue Score by Injury Status\")\nplt.xticks([0, 1], [\"Healthy\", \"Injury\"], rotation=0)\n\nplt.show()"
   }
 ]

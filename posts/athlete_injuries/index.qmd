@@ -18,7 +18,7 @@ The bane of any athlete's existence is: **Injury**.
 
 You can try to escape from it; do your stretching, conditioning, strengthening, but it'll always catch up to you in some way unexpectedly. The most you can do is prime the body to try to prevent injuries. 
 
-It's a lot easier to get injured as you get older. That's why, when you're young, you think you're invincible. So, it should make sense that people aged 18-25 at their athletic peak should be the least injury-prone, right? Wrong. The higher level in competitive sports you go, the more risk of injury there is. Thus, through this dataset, we will try to analyze **which training and recovery factors are associated with injury among collegiate athletes?** 
+It's a lot easier to get injured as you get older. That's why, when you're young, you think you're invincible. So, it should make sense that people aged 18-25 at their athletic peak should be the least injury-prone, right? Wrong. The higher level in competitive sports you go, the more risk of injury there is. Thus, through this dataset, we will try to analyze **How do training load, recovery, and fatigue differ between injured and healthy collegiate athletes?** 
 
 ## Loading and Inspecting the Data
 ```{python}
@@ -79,7 +79,44 @@ plt.xlabel("Injury status")
 plt.ylabel("Average fatigue score")
 plt.title("Average Fatigue Score by Injury Status")
 plt.xticks([0, 1], ["Healthy", "Injury"], rotation=0)
+plt.yticks(range(11))
 
 plt.show()
 
 ```
+
+Humans have drive and grit, and there's been a long-standing narrative that we have to push past our limits in order to accomplish something. That's only true to an extent and we have to be able to manage that to make sure nothing breaks; figuratively and literally speaking. 
+
+Fatigue is one of the most basic indicators that tell us that our bodies need rest. The more fatigue the body experiences, the more at risk of injury too. Out of a 10-point scale, the fact that the injured athletes have a noticeably higher score on fatigue is concering. The healthy athletes maintain a baseline-level (suitable for athletes), at almost a score of 5. On the other hand, the injured is approaching a dangerous level with a score reaching almost an 8. With matches, practice, and additional training, fatigue is bound to keep amassing.
+
+## Does it affect Performance?
+```{python}
+performance_summary = (
+    athletes
+    .groupby("Injury_Indicator")[
+        ["Performance_Score", "Team_Contribution_Score"]
+    ]
+    .mean()
+)
+
+performance_summary.index = ["Healthy", "Injured"]
+performance_summary
+```
+
+```{python}
+performance_summary["Performance_Score"].plot(kind="bar")
+
+plt.xlabel("Injury status")
+plt.ylabel("Average performance score")
+plt.title("Average Performance Score by Injury Status")
+plt.xticks(rotation=0)
+plt.yticks(range(0,101,10))
+plt.show()
+```
+
+With the habits of the injured players, we can see that it does make them perform better...marginally. The average performance score of a healthy player is 74.4, whereas the average performance score of an injured player is 75.7. Does overtraining make the performance score higher? Yes. Is it worth it? No.
+
+## Conclusion
+Doing all that extra training, stressing the body to the brink of breaking, and hindering the body from resting only accounts for an almost obsolete increase in performance. The worst part is that tiny sliver of increase in performance may set the athlete back from training or even playing for extended periods of time. Then what? High risk, very low reward. 
+
+The lesson here is: even the greatest athletes get injured. The truly great athletes are the ones who are able to prolong their career by staying healthy. 
