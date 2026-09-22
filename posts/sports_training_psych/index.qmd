@@ -9,11 +9,11 @@ date: 2026-09-21
 
 ## Data Source:
 
-This analysis uses a sample fromthe *Sports Training* dataset by
+This analysis uses a sample from the *Sports Training* dataset by
 [VisionLangAI], obtained from Kaggle and licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-The original dataset contains 50,000 observations. To keep the committed data file below 5MB limit, a reporducible random sample of 10,000 observations was selected using set.seed(521) and slice_sample()
+The original dataset contains 50,000 observations. To keep the committed data file below 5MB limit, a reporducible random sample of 10,000 observations was selected using set.seed(521) and slice_sample().
 
 Source: [Sports Training](https://www.kaggle.com/datasets/visionlangai/sports-training)
 
@@ -43,7 +43,7 @@ method_summary <- sports |>
 
 method_summary
 ```
-Here, we count all the available training methods recorded in this dataset and calculate their percentage. We can see that the most used training method for athletes is to set a goal for myself. However, this method is extremely comparable to self-talk and mindfulness as well, with all three hovering around 26% of the whole population. This makes sense as all three of these methods are what's taught in life even away from sports. People are taught since adolescence to set a goal for themselves, to think over their actions, and be aware of their actions and the subsequent results. What's interesting here, though, is that the lowest used method is cognitive restructuring: a method not very commonly heard of. 
+Here, we count all the available training methods recorded in this dataset and calculate their percentage. We can see that the most used training method for athletes is to set a goal for myself. However, this method is extremely comparable to self-talk and mindfulness as well, with all three hovering around 25-26% of the whole population. This makes sense as all three of these methods are what's taught in life even away from sports. People are taught since adolescence to set a goal for themselves, to think over their actions, and be aware of their actions and the subsequent results. What's interesting here, though, is that the lowest used method is cognitive restructuring: a method not very commonly heard of. 
 
 ## Summarizing Effectiveness by Method
 ```{r}
@@ -90,7 +90,7 @@ ggplot(
 
 Even though some methods are preferred more than others, this figure above shows that the average adapatation effectiveness scores are very similar across all five training methods. 
 
-Self-talk method had the highest average score at about 12.06 while mindfulness had the lowest average score at about 11.96. This only produces a spread between the highest and lowest score at 0.10 points, which suggests that the training method alone isn't very strongly associated with adaptation effectiveness in this dataset.
+Self-talk method had the highest average score at about 12.15 while mindfulness had the lowest average score at about 11.86. This only produces a spread between the highest and lowest score of less than 0.30 points, which suggests that the training method alone isn't very strongly associated with adaptation effectiveness in this dataset.
 
 ## Relationship between Adherence and Effectiveness
 ```{r}
@@ -113,4 +113,4 @@ tibble(
 )
 ```
 
-With both Pearson's correlation (-0.009) and Kendall's tau (-0.005) nearing very closely to zero, we can see that there is essentially no linear nor monotonic association between adherence to training and the adaptation effectiveness score. This means that, within this dataset, higher adherence to training does not appear to correspond with higher or lower adaptation effectiveness.
+With both Pearson's correlation (-0.004) and Kendall's tau (-0.004) nearing very closely to zero, we can see that there is essentially no linear nor monotonic association between adherence to training and the adaptation effectiveness score. This means that, within this dataset, higher adherence to training does not appear to correspond with higher or lower adaptation effectiveness.
