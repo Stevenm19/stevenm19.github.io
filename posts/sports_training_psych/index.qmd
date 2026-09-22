@@ -69,15 +69,46 @@ method_summary |>
 ggplot(
   method_summary,
   aes(
-    x = reorder(Training_Method, avg_effectiveness),
-    y = avg_effectiveness
+    y = reorder(Training_Method, avg_effectiveness),
+    x = avg_effectiveness
   )
 ) +
-  geom_col() +
-  coord_cartesian(ylim = c(11.8, 12.2)) +
+  geom_point(size = 4) +
+  geom_text(
+    aes(label = round(avg_effectiveness, 2)),
+    nudge_y = 0.15
+  ) +
+  coord_cartesian(xlim = c(11.8, 12.2)) +
   labs(
-    x = "Training method",
-    y = "Average adaptation effectiveness score"
+    x = "Average adaptation effectiveness score",
+    y = "Training method"
   ) +
   theme_minimal()
 ```
+
+Even though some methods are preferred more than others, this figure above shows that the average adapatation effectiveness scores are very similar across all five training methods. 
+
+Self-talk method had the highest average score at about 12.06 while mindfulness had the lowest average score at about 11.96. This only produces a spread between the highest and lowest score at 0.10 points, which suggests that the training method alone isn't very strongly associated with adaptation effectiveness in this dataset.
+
+## Relationship between Adherence and Effectiveness
+```{r}
+tibble(
+  measure = c("Pearson correlation", "Kendall's tau"),
+  value = c(
+    cor(
+      sports$Training_Adherence_Rate,
+      sports$Adaptation_Effectiveness_Score,
+      use = "complete.obs",
+      method = "pearson"
+    ),
+    cor(
+      sports$Training_Adherence_Rate,
+      sports$Adaptation_Effectiveness_Score,
+      use = "complete.obs",
+      method = "kendall"
+    )
+  )
+)
+```
+
+With both Pearson's correlation (-0.009) and Kendall's tau (-0.005) nearing very closely to zero, we can see that there is essentially no linear nor monotonic association between adherence to training and the adaptation effectiveness score. This means that, within this dataset, higher adherence to training does not appear to correspond with higher or lower adaptation effectiveness.
