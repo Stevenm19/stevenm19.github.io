@@ -28,6 +28,27 @@
     "text": "End of my first week in Vancouver"
   },
   {
+    "objectID": "posts/sports_training_psych/index.html#data-source",
+    "href": "posts/sports_training_psych/index.html#data-source",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "Data Source:",
+    "text": "Data Source:\nThis analysis uses the Sports Training dataset by [VisionLangAI], obtained from Kaggle and licensed under CC BY 4.0.\nSource: https://www.kaggle.com/datasets/visionlangai/sports-training"
+  },
+  {
+    "objectID": "posts/sports_training_psych/index.html#intro",
+    "href": "posts/sports_training_psych/index.html#intro",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "Intro",
+    "text": "Intro\nThere exist many methods and intensities that athletes can use to train. From a general perspective, most people think the same two things when it comes to training: Train hard, and Train smart.\nBut what does that really mean? Obviously, there are different sports and each sport has to train differrently. However, at the same time, each sport can take something away from another. Besides the sport, we need to consider the individuals playing the sport. Even if two players play the same sport, no two players will have the same psychological profile.\nThrough an analysis of this dataset, we will analyze training methods, adaptation types, intensity level and other factors to answer the question: Which psychological training methods are associated with better outcomes for athletes?"
+  },
+  {
+    "objectID": "posts/sports_training_psych/index.html#analysis",
+    "href": "posts/sports_training_psych/index.html#analysis",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "Analysis",
+    "text": "Analysis\n\n# Loading the data and inspecting\nlibrary(tidyverse)\n\nsports &lt;- read_csv('data/psych_training_sports.csv')\nglimpse(sports)\n\nRows: 50,000\nColumns: 24\n$ Participant_ID                  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,…\n$ Age                             &lt;dbl&gt; 24, 32, 28, 25, 24, 28, 28, 21, 25, 20…\n$ Gender                          &lt;chr&gt; \"Female\", \"Female\", \"Female\", \"Male\", …\n$ Sport_Type                      &lt;chr&gt; \"Basketball\", \"Football\", \"Tennis\", \"F…\n$ Experience_Years                &lt;dbl&gt; 7, 9, 7, 1, 1, 9, 9, 4, 9, 3, 7, 6, 8,…\n$ Training_Method                 &lt;chr&gt; \"Cognitive Restructuring\", \"Self-talk\"…\n$ Adaptation_Type                 &lt;chr&gt; \"Coach-adjusted\", \"Feedback-based\", \"A…\n$ Session_Count                   &lt;dbl&gt; 5, 5, 16, 16, 18, 17, 18, 9, 10, 7, 16…\n$ Session_Duration_Min            &lt;dbl&gt; 69, 62, 38, 72, 83, 77, 68, 58, 71, 84…\n$ Training_Period_Weeks           &lt;dbl&gt; 9, 6, 7, 8, 4, 11, 8, 7, 7, 7, 8, 10, …\n$ Intervention_Intensity_Level    &lt;chr&gt; \"Low\", \"High\", \"Medium\", \"Medium\", \"Me…\n$ Intrinsic_Motivation            &lt;dbl&gt; 81, 50, 54, 94, 53, 65, 73, 65, 51, 98…\n$ Extrinsic_Motivation            &lt;dbl&gt; 89, 84, 50, 68, 75, 64, 60, 75, 49, 76…\n$ Anxiety_Level                   &lt;dbl&gt; 61, 25, 78, 21, 34, 61, 62, 32, 25, 66…\n$ Stress_Coping_Ability           &lt;dbl&gt; 84, 52, 89, 67, 97, 59, 67, 47, 80, 78…\n$ Resilience_Index                &lt;dbl&gt; 52, 65, 72, 60, 61, 59, 81, 65, 57, 87…\n$ Self_Confidence_Score           &lt;dbl&gt; 71, 86, 88, 50, 60, 65, 64, 61, 98, 66…\n$ Performance_Score               &lt;dbl&gt; 83, 77, 80, 57, 88, 75, 83, 52, 99, 61…\n$ Training_Adherence_Rate         &lt;dbl&gt; 79, 83, 64, 93, 65, 61, 72, 70, 82, 75…\n$ Post_Session_Satisfaction_Score &lt;dbl&gt; 64, 96, 71, 63, 75, 77, 72, 63, 73, 51…\n$ Motivation_Gain                 &lt;dbl&gt; 9.22, 11.44, 7.04, 2.79, 4.97, 6.08, 1…\n$ Confidence_Gain                 &lt;dbl&gt; 7.40, 3.55, 2.20, 19.81, 7.12, 16.39, …\n$ Stress_Reduction_Percentage     &lt;dbl&gt; 17.55, 11.70, 7.79, 20.88, 17.40, 15.6…\n$ Adaptation_Effectiveness_Score  &lt;dbl&gt; 18.646073, 15.376260, 16.099560, 12.08…"
+  },
+  {
     "objectID": "about.html#life-up-until-now",
     "href": "about.html#life-up-until-now",
     "title": "About",
@@ -49,31 +70,45 @@
     "text": "Outside of Academics and Careers\nOn a normal day, I’d probably jump at any opportunity to play volleyball. However, it’s not sustainable to play every day so I end up working out more often. Otherwise, my life is simple: a black iced coffee, good food, good company and the occasional scenic nature walk."
   },
   {
-    "objectID": "posts/sports_training_psych/index.html",
-    "href": "posts/sports_training_psych/index.html",
+    "objectID": "posts/sports_training_psych/index.html#loading-the-data",
+    "href": "posts/sports_training_psych/index.html#loading-the-data",
     "title": "Psychological Effectiveness in Sports Training",
-    "section": "",
-    "text": "Data Source:\nThis analysis uses the Sports Training dataset by [VisionLangAI], obtained from Kaggle and licensed under CC BY 4.0.\nSource: https://www.kaggle.com/datasets/visionlangai/sports-training"
+    "section": "Loading the Data",
+    "text": "Loading the Data\n\n# Loading the data and inspecting\nlibrary(tidyverse)\n\nsports &lt;- read_csv('data/psych_training_sports.csv')\nglimpse(sports)\n\nRows: 50,000\nColumns: 24\n$ Participant_ID                  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,…\n$ Age                             &lt;dbl&gt; 24, 32, 28, 25, 24, 28, 28, 21, 25, 20…\n$ Gender                          &lt;chr&gt; \"Female\", \"Female\", \"Female\", \"Male\", …\n$ Sport_Type                      &lt;chr&gt; \"Basketball\", \"Football\", \"Tennis\", \"F…\n$ Experience_Years                &lt;dbl&gt; 7, 9, 7, 1, 1, 9, 9, 4, 9, 3, 7, 6, 8,…\n$ Training_Method                 &lt;chr&gt; \"Cognitive Restructuring\", \"Self-talk\"…\n$ Adaptation_Type                 &lt;chr&gt; \"Coach-adjusted\", \"Feedback-based\", \"A…\n$ Session_Count                   &lt;dbl&gt; 5, 5, 16, 16, 18, 17, 18, 9, 10, 7, 16…\n$ Session_Duration_Min            &lt;dbl&gt; 69, 62, 38, 72, 83, 77, 68, 58, 71, 84…\n$ Training_Period_Weeks           &lt;dbl&gt; 9, 6, 7, 8, 4, 11, 8, 7, 7, 7, 8, 10, …\n$ Intervention_Intensity_Level    &lt;chr&gt; \"Low\", \"High\", \"Medium\", \"Medium\", \"Me…\n$ Intrinsic_Motivation            &lt;dbl&gt; 81, 50, 54, 94, 53, 65, 73, 65, 51, 98…\n$ Extrinsic_Motivation            &lt;dbl&gt; 89, 84, 50, 68, 75, 64, 60, 75, 49, 76…\n$ Anxiety_Level                   &lt;dbl&gt; 61, 25, 78, 21, 34, 61, 62, 32, 25, 66…\n$ Stress_Coping_Ability           &lt;dbl&gt; 84, 52, 89, 67, 97, 59, 67, 47, 80, 78…\n$ Resilience_Index                &lt;dbl&gt; 52, 65, 72, 60, 61, 59, 81, 65, 57, 87…\n$ Self_Confidence_Score           &lt;dbl&gt; 71, 86, 88, 50, 60, 65, 64, 61, 98, 66…\n$ Performance_Score               &lt;dbl&gt; 83, 77, 80, 57, 88, 75, 83, 52, 99, 61…\n$ Training_Adherence_Rate         &lt;dbl&gt; 79, 83, 64, 93, 65, 61, 72, 70, 82, 75…\n$ Post_Session_Satisfaction_Score &lt;dbl&gt; 64, 96, 71, 63, 75, 77, 72, 63, 73, 51…\n$ Motivation_Gain                 &lt;dbl&gt; 9.22, 11.44, 7.04, 2.79, 4.97, 6.08, 1…\n$ Confidence_Gain                 &lt;dbl&gt; 7.40, 3.55, 2.20, 19.81, 7.12, 16.39, …\n$ Stress_Reduction_Percentage     &lt;dbl&gt; 17.55, 11.70, 7.79, 20.88, 17.40, 15.6…\n$ Adaptation_Effectiveness_Score  &lt;dbl&gt; 18.646073, 15.376260, 16.099560, 12.08…"
   },
   {
-    "objectID": "posts/sports_training_psych/index.html#analysis",
-    "href": "posts/sports_training_psych/index.html#analysis",
+    "objectID": "posts/sports_training_psych/index.html#examining-the-training-methods",
+    "href": "posts/sports_training_psych/index.html#examining-the-training-methods",
     "title": "Psychological Effectiveness in Sports Training",
-    "section": "Analysis",
-    "text": "Analysis"
+    "section": "Examining the Training Methods",
+    "text": "Examining the Training Methods\n\nmethod_summary &lt;- sports |&gt;\n    count(Training_Method, sort = TRUE) |&gt;\n    mutate(pct_total = n/sum(n) * 100)\n\nmethod_summary\n\n# A tibble: 5 × 3\n  Training_Method             n pct_total\n  &lt;chr&gt;                   &lt;int&gt;     &lt;dbl&gt;\n1 Goal-setting            13059     26.1 \n2 Self-talk               12934     25.9 \n3 Mindfulness             12930     25.9 \n4 Visualization            7033     14.1 \n5 Cognitive Restructuring  4044      8.09\n\n\nHere, we count all the available training methods recorded in this dataset and calculate their percentage. We can see that the most used training method for athletes is to set a goal for myself. However, this method is extremely comparable to self-talk and mindfulness as well, with all three hovering around 26% of the whole population. This makes sense as all three of these methods are what’s taught in life even away from sports. People are taught since adolescence to set a goal for themselves, to think over their actions, and be aware of their actions and the subsequent results. What’s interesting here, though, is that the lowest used method is cognitive restructuring: a method not very commonly heard of."
   },
   {
-    "objectID": "posts/sports_training_psych/index.html#data-source",
-    "href": "posts/sports_training_psych/index.html#data-source",
+    "objectID": "posts/sports_training_psych/index.html#summarizing-effectiveness",
+    "href": "posts/sports_training_psych/index.html#summarizing-effectiveness",
     "title": "Psychological Effectiveness in Sports Training",
-    "section": "Data Source:",
-    "text": "Data Source:\nThis analysis uses the Sports Training dataset by [VisionLangAI], obtained from Kaggle and licensed under CC BY 4.0.\nSource: https://www.kaggle.com/datasets/visionlangai/sports-training"
+    "section": "Summarizing Effectiveness",
+    "text": "Summarizing Effectiveness"
   },
   {
-    "objectID": "posts/sports_training_psych/index.html#intro",
-    "href": "posts/sports_training_psych/index.html#intro",
+    "objectID": "posts/sports_training_psych/index.html#summarizing-effectiveness-by-method",
+    "href": "posts/sports_training_psych/index.html#summarizing-effectiveness-by-method",
     "title": "Psychological Effectiveness in Sports Training",
-    "section": "Intro",
-    "text": "Intro\nThere exist many methods and intensities that athletes can use to train. From a general perspective, most people think the same two things when it comes to training: Train hard, and Train smart.\nBut what does that really mean? Obviously, there are different sports and each sport has to train differrently. However, at the same time, each sport can take something away from another. Besides the sport, we also need to consider the individuals playing the sport. Even if two players play the same sport, no two players will have the same psychological profile.\nThrough an analysis of this dataset, we will analyze training methods, adaptation types, intensity level and other factors to answer the question: Which psychological training methods are associated with better outcomes for athletes?"
+    "section": "Summarizing Effectiveness by Method",
+    "text": "Summarizing Effectiveness by Method\n\nmethod_summary &lt;- sports |&gt;\n    group_by(Training_Method) |&gt;\n    summarize(\n        avg_motivation_gain = mean(Motivation_Gain, na.rm = TRUE),\n        avg_confidence_gain = mean(Confidence_Gain, na.rm = TRUE),\n        avg_stress_reduction = mean(Stress_Reduction_Percentage, na.rm = TRUE),\n        avg_effectiveness = mean(Adaptation_Effectiveness_Score, na.rm = TRUE),\n        .groups = 'drop'\n    ) %&gt;%\n    left_join(method_summary, ., by='Training_Method')\n\nmethod_summary |&gt;\n    print(width = Inf)\n\n# A tibble: 5 × 7\n  Training_Method             n pct_total avg_motivation_gain\n  &lt;chr&gt;                   &lt;int&gt;     &lt;dbl&gt;               &lt;dbl&gt;\n1 Goal-setting            13059     26.1                 7.17\n2 Self-talk               12934     25.9                 7.18\n3 Mindfulness             12930     25.9                 7.23\n4 Visualization            7033     14.1                 7.24\n5 Cognitive Restructuring  4044      8.09                7.16\n  avg_confidence_gain avg_stress_reduction avg_effectiveness\n                &lt;dbl&gt;                &lt;dbl&gt;             &lt;dbl&gt;\n1                11.1                 15.5              12.0\n2                11.1                 15.6              12.1\n3                11.1                 15.6              12.0\n4                11.2                 15.6              12.0\n5                11.1                 15.4              12.0"
+  },
+  {
+    "objectID": "posts/sports_training_psych/index.html#comparing",
+    "href": "posts/sports_training_psych/index.html#comparing",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "Comparing",
+    "text": "Comparing"
+  },
+  {
+    "objectID": "posts/sports_training_psych/index.html#comparing-average-effectiveness",
+    "href": "posts/sports_training_psych/index.html#comparing-average-effectiveness",
+    "title": "Psychological Effectiveness in Sports Training",
+    "section": "Comparing Average Effectiveness",
+    "text": "Comparing Average Effectiveness\n#| label: fig-training-effectiveness #| fig-cap: “Average adaptation effectiveness score by psychological training method.”"
   }
 ]
