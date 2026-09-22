@@ -9,9 +9,11 @@ date: 2026-09-21
 
 ## Data Source:
 
-This analysis uses the *Sports Training* dataset by
+This analysis uses a sample fromthe *Sports Training* dataset by
 [VisionLangAI], obtained from Kaggle and licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+The original dataset contains 50,000 observations. To keep the committed data file below 5MB limit, a reporducible random sample of 10,000 observations was selected using set.seed(521) and slice_sample()
 
 Source: [Sports Training](https://www.kaggle.com/datasets/visionlangai/sports-training)
 
@@ -30,7 +32,7 @@ Through an analysis of this dataset, we will analyze training methods, adaptatio
 # Loading the data and inspecting
 library(tidyverse)
 
-sports <- read_csv('data/psych_training_sports.csv')
+sports <- read_csv('data/psych_training_sports_sample.csv')
 glimpse(sports)
 ```
 ## Examining the Training Methods

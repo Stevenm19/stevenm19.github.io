@@ -4,3 +4,4 @@ _site/
 /.quarto/
 **/*.quarto_ipynb
 .Rproj.user
+posts/your-post-folder/psych_training_sports.csv
